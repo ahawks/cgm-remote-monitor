@@ -61,4 +61,21 @@ describe('Data', function ( ) {
     delta.devicestatus.bar.should.equal(true);
   });
 
+  it('calc sigs', function () {
+    data.sgvs = [{y: 100, x:100},{y: 100, x:99}];
+    data.profiles = [{carbratio: 19, carbs_hr: 30, dia :3, sens: 95, target_high: 120, target_low: 100}];
+    data.treatments = [
+      {enteredBy: 'Dad', eventType: 'Meal Bolus', glucose: '79', glucoseType: 'Finger', carbs: '18', insulin: '1.05', created_at: '2015-06-20T15:32:35.863Z'}
+      , {enteredBy: 'Mom', eventType: 'Carb Correction', glucose: '89', glucoseType: 'Finger', carbs: '6', created_at: '2015-06-20T12:07:27.036Z'}
+    ];
+    data.mbgs = [{y: 100, x:100},{y: 100, x:99}];
+    data.cals = [
+      {device: 'dexcom', scale:1, x: 1434814776000, intercept: 29618.792337617968, slope: 812.1406659105185}
+      , {device: 'dexcom', scale:1, x: 1434814432000, intercept: 29612.38328720857, slope: 811.9652057162972}
+    ];
+
+    console.info('sigs', data.calcSigs());
+
+  });
+
 });
